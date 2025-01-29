@@ -5,6 +5,7 @@ import {fetchCustomer360Details } from "./services/customer";
 import StickyHeader from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MainContent from "./components/MainContent";
+import TableCustom from "./components/TableCustom";
 
 export default function Dashboard() {
   const [inputValue, setInputValue] = useState('')
@@ -13,7 +14,6 @@ export default function Dashboard() {
   const handleSubmit = (input) => {
     setInputValue(input);
     const response = fetchCustomer360Details(input);
-    console.log("response....." , response)
     setResponse(response)
   }
 

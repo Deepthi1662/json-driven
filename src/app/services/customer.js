@@ -24,33 +24,31 @@ export const fetchCustomer360Details = (query) => {
                     values: [
                         {
                             type: "Accordion",
+                            columns: 2,
                             values: [
                                 {
                                 type: "Card",
-                                width: 500,
+                                width: 650,
+                                label: "Profile Details",
                                 values: [
                                     {
-                                    type: "header",
-                                    label: "Profile Details",
-                                    },
-                                    {
-                                    type: "keyValue",
-                                    values: [
-                                        { label: "Customer ID", value: "31082185" },
-                                        { label: "Customer Name", value: "Deepthi Dhulipalla" },
-                                        { label: "creationDate", value: "12-Feb-2019" },
-                                        { label: "Date Of Birth", value: "11-Dec-1994" }
-                                    ]
+                                        type: "KeyValue",
+                                        values: [
+                                            { label: "Customer ID", value: "31082185" },
+                                            { label: "Customer Name", value: "Deepthi Dhulipalla" },
+                                            { label: "creationDate", value: "12-Feb-2019" },
+                                            { label: "Date Of Birth", value: "11-Dec-1994" }
+                                        ]
                                     }
                                 ]
                                 },
                                 {
                                 type: "Card",
-                                width: 500,
+                                width: 650,
+                                label: "Relationship Details",
                                 values: [
-                                    { type: "header", label: "Relationship Details" },
                                     {
-                                    type: "keyValue",
+                                    type: "KeyValue",
                                     values: [
                                         { label: "CRN LOB", value: "51" },
                                         { label: "RM", value: "NAV" },
@@ -59,40 +57,17 @@ export const fetchCustomer360Details = (query) => {
                                     ]
                                     }
                                 ]
-                                },
-                                {
-                                    type: "BarChart",
-                                    width: 500,
-                                    xKey: "Days",
-                                    yKey: "balance",
-                                    values: [
-                                        {
-                                            type: "header",
-                                            label: "AQB movment",
-                                        },
-                                        {
-                                            type: "chart",
-                                            values: [
-                                                { xKey: "Day1", value: 100 },
-                                                { xKey: "Day2", value: 200 },
-                                                { xKey: "Day3", value: 300 },
-                                                { xKey: "Day4", value: 400 },
-                                                { xKey: "Day5", value: 200 },
-                                                { xKey: "Day6", value: 300 },
-                                                { xKey: "Day7", value: 600 },
-                                            ]
-                                        }
-                                    ]
-                                    }
+                                }
                             ]
                         },
                         {
                             type: "Accordion",
+                            columns: 2,
                             values: [
                                 {
                                     type: "CardWithTabs",
                                     label: "Financial Overview",
-                                    width: 500,
+                                    width: 650,
                                     values: [
                                         {
                                             label: "BarChart",
@@ -189,6 +164,37 @@ export const fetchCustomer360Details = (query) => {
                                             ]
                                         }
 
+                                    ]
+                                },
+                                {
+                                    type: "Card",
+                                    width: 650,
+                                    label: "Transactions",
+                                    values: [
+                                        {
+                                            type: "Table",
+                                            width: 500,
+                                            columnNames: [
+                                                "invoice",
+                                                "status", 
+                                                "method", 
+                                                "amount"
+                                            ],
+                                            rows: [
+                                            {
+                                                "invoice": "INV001",
+                                                "status": "Pending",
+                                                "method": "Credit Card",
+                                                "amount": "250.00"
+                                            },
+                                            {
+                                                "invoice": "INV001",
+                                                "status": "Pending",
+                                                "method": "Credit Card",
+                                                "amount": "250.00"
+                                            } 
+                                         ]
+                                        }
                                     ]
                                 }
                             ]

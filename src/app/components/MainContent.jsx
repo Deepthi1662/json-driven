@@ -7,7 +7,7 @@ const MainContent = ({response}) => {
             {response && response.map((element, index) => {
               if (element?.type === 'Accordion') {
                 return (
-                  <Accordian key={`Accordian-${index}`} data={element?.values} />
+                  <Accordian key={`Accordian-${index}`} data={element} />
                 );
               }
               return null;

@@ -6,7 +6,7 @@ import LineChartCustom from "./LineChartCustom";
 
 const CardWithTabs = ({ data }) => {
   return (
-    <div className="rounded-lg border border-gray-800 w-full bg-white shadow-lg p-6">
+    <div className="rounded-lg border bg-white shadow-lg" style={{ width: `${data?.width}px`}}>
       <h3 className="text-xl font-semibold text-gray-900 mb-4">{data?.label}</h3>
       
       <Tabs defaultValue={data?.values?.[0]?.label}>

@@ -3,17 +3,17 @@ import CardDetails from "./CardDetails";
 import CardWithTabs from "./CardWithTabs";
 
 const Accordian = ({ data, keyElement }) => {
+  const gridCols = `grid-cols-${data?.columns || 1}`; 
   return (
-    <div className="grid grid-cols-3 gap-4" key={keyElement}>
-      {data &&
-        data.map((element, index) => {
+    <div className={`grid ${gridCols}`} key={keyElement}>
+      {data?.values &&
+        data?.values.map((element, index) => {
          const uniqueKey = element?.label || element?.id || element?.type;  
           if (element?.type === 'Card') {
             return (
               <CardDetails
                 key={uniqueKey + index}
-                title={element.values?.[0]?.label}
-                details={element.values?.[1]?.values}
+                data={element}
               />
             );
           }

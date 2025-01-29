@@ -7,28 +7,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import KeyValue from "./KeyValue";
+import TableCustom from "./TableCustom";
 
-const CardDetails = ({ title, details }) => {
+const CardDetails = ({ data }) => {
   return (
-    <Card className="w-[400px]">
+    <Card style={{ width: `${data?.width}px`}}>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{data?.label}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="p-8">
-          <div className="grid grid-cols-2 gap-4">
-            {details.map((item, index) => (
-              <div className="flex flex-col" key={index}>
-                <span className="font-semibold text-gray-1200">{item.label}</span>
-                <span className="text-gray-1000">
-                  {typeof item.value === "object" && item.value !== null
-                    ? item.value.value
-                    : item.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        {
+          data?.values && data?.values.map((element, index) => {
+            const elementKey = `${element?.type}-${index}`;
+            if(element?.type == 'KeyValue') {
+              return (
+                <KeyValue
+                  key={elementKey}
+                  details={element?.values}
+                /> 
+              )
+            }
+            if(element?.type == 'Table') {
+              return (
+                <TableCustom
+                  response={element}
+                  key={elementKey}
+                />
+              )
+            }
+          })
+        }      
       </CardContent>
     </Card>
   );
