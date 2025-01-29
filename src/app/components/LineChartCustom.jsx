@@ -47,7 +47,7 @@ const LineChartCustom = ({data, xKey, yKey}) => {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => `D${value.slice(3)}`}
+              tickFormatter={(value) => value}
             />
             <ChartTooltip
               cursor={false}

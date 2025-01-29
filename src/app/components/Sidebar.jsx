@@ -6,7 +6,7 @@ const Sidebar = ({ menuItems }) => {
     }
   
     return (
-    <div className="flex-none sidebar bg-gray-800 text-white p-4 w-64 h-full" key="sidebar">
+    <div className="flex-none sidebar bg-gray-200 text-black p-4 w-64 h-full" key="sidebar">
       <ul className="menu space-y-4">
         {menuItems.map((item, index) => (
           <li key={index} className="menu-item">

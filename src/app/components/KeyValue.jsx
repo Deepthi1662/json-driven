@@ -1,8 +1,9 @@
-const KeyValue = ({details}) => {
+const KeyValue = ({data}) => {
+    const gridCols = `grid-cols-${data?.columns || 1}`; 
     return (
         <div className="p-3">
-          <div className="grid grid-cols-2 gap-4">
-            {details && details.map((item, index) => (
+          <div className={`grid ${gridCols} gap-4`}>
+            {data?.values && data?.values.map((item, index) => (
               <div className="flex flex-col" key={index}>
                 <span className="font-semibold text-gray-1200">{item.label}</span>
                 <span className="text-gray-1000">

@@ -11,10 +11,13 @@ import KeyValue from "./KeyValue";
 import TableCustom from "./TableCustom";
 
 const CardDetails = ({ data }) => {
+  const width = data?.width ? `${data.width}px` : 'auto';
+  const bgColor = data?.bgColor ? data.bgColor : 'transparent';
+
   return (
-    <Card style={{ width: `${data?.width}px`}}>
+    <Card className={`${bgColor}`} style={{ width }}>
       <CardHeader>
-        <CardTitle>{data?.label}</CardTitle>
+        <CardTitle className="text-xl">{data?.label}</CardTitle>
       </CardHeader>
       <CardContent>
         {
@@ -24,7 +27,7 @@ const CardDetails = ({ data }) => {
               return (
                 <KeyValue
                   key={elementKey}
-                  details={element?.values}
+                  data={element}
                 /> 
               )
             }

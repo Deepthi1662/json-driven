@@ -3,19 +3,22 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import BarChartCustom from "./BarChartCustom";
 import PieChartCustom from "./PieChartCustom";
 import LineChartCustom from "./LineChartCustom";
+import KeyValue from "./KeyValue";
+import CardDetails from "./CardDetails";
+import TableCustom from "./TableCustom";
 
 const CardWithTabs = ({ data }) => {
   return (
     <div className="rounded-lg border bg-white shadow-lg" style={{ width: `${data?.width}px`}}>
-      <h3 className="text-xl font-semibold text-gray-900 mb-4">{data?.label}</h3>
+      <h2 className="font-bold flex flex-col text-xl space-y-2 p-6">{data?.label}</h2>
       
       <Tabs defaultValue={data?.values?.[0]?.label}>
-        <TabsList className="flex border-b border-gray-200 mb-4">
+        <TabsList className="flex mb-4">
           {data?.values?.map((tab, index) => (
             <TabsTrigger
               key={tab?.label || tab?.type}
               value={tab?.label}
-              className="px-4 py-2 text-sm font-medium text-gray-800 rounded-t-lg hover:bg-gray-100 active:bg-gray-200 focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 text-sm font-medium hover:bg-gray-100 active:bg-gray-200 focus:ring-2 focus:ring-blue-500"
             >
               {tab?.label}
             </TabsTrigger>
@@ -27,19 +30,19 @@ const CardWithTabs = ({ data }) => {
             <TabsContent key={index} value={tab?.label}>
               {tab?.values?.map((chartData, chartIndex) => {
                 const uniqueKey = chartData?.label || chartData?.type
-                if (chartData.type === "BarChart") {
-                  return (
-                    <div key={chartIndex} className="mb-6">
-                      <BarChartCustom
-                        data={chartData?.values}
-                        xKey="xKey"
-                        yKey="value"
-                        key={uniqueKey}
-                      />
-                    </div>
-                  );
-                }
-                if (chartData.type === "LineChart") {
+                  if (chartData.type === "BarChart") {
+                    return (
+                      <div key={chartIndex} className="mb-6">
+                        <BarChartCustom
+                          data={chartData?.values}
+                          xKey="xKey"
+                          yKey="value"
+                          key={uniqueKey}
+                        />
+                      </div>
+                    );
+                  }
+                  if (chartData.type === "LineChart") {
                     return (
                       <div key={chartIndex} className="mb-6">
                         <LineChartCustom
@@ -59,6 +62,24 @@ const CardWithTabs = ({ data }) => {
                             yKey="value"
                         />
                     );
+                  }
+                  if (chartData.type === "KeyValue") {
+                    return (
+                      <div key={chartIndex} className="mb-6">
+                        <KeyValue
+                          key={chartIndex}
+                          data={chartData}
+                        /> 
+                      </div>
+                    );
+                  }
+                  if(chartData?.type == 'Table') {
+                    return (
+                      <TableCustom
+                        response={chartData}
+                        key={uniqueKey}
+                      />
+                    )
                   }
                 return null;
               })}

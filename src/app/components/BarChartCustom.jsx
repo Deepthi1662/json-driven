@@ -24,15 +24,16 @@ const chartConfig = {
 };
 
 const BarChartCustom = ({ data, xKey, yKey }) => {
+  const width = data?.width ? `${data.width}px` : 'auto';
   return (
-    <Card className="w-[400px]">
+    <Card style={{width}}>
       <CardHeader>
         <CardTitle>{data?.[0]?.label}</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <ResponsiveContainer width="100%" height={200}>
+          <ResponsiveContainer width="100%">
             {console.log("Data", data?.[1]?.values)}
             <BarChart data={data?.[1]?.values}>
               <CartesianGrid vertical={false} />
@@ -41,7 +42,7 @@ const BarChartCustom = ({ data, xKey, yKey }) => {
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
-                tickFormatter={(value) => `D${value.slice(3)}`}
+                tickFormatter={(value) => value}
               />
               <Tooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Bar dataKey={yKey} fill="var(--color-desktop)" radius={2} />
