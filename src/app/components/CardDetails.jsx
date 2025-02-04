@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import KeyValue from "./KeyValue";
 import TableCustom from "./TableCustom";
+import SimpleWidget from "./SimpleWidget";
 
 const CardDetails = ({ data }) => {
   const width = data?.width ? `${data.width}px` : 'auto';
@@ -40,7 +41,8 @@ const CardDetails = ({ data }) => {
               )
             }
           })
-        }      
+        }
+                
       </CardContent>
     </Card>
   );

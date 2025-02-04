@@ -6,6 +6,8 @@ import LineChartCustom from "./LineChartCustom";
 import KeyValue from "./KeyValue";
 import CardDetails from "./CardDetails";
 import TableCustom from "./TableCustom";
+import SimpleWidget from "./SimpleWidget";
+import Widgets from "./Widgets";
 
 const CardWithTabs = ({ data }) => {
   return (
@@ -79,6 +81,13 @@ const CardWithTabs = ({ data }) => {
                         response={chartData}
                         key={uniqueKey}
                       />
+                    )
+                  }
+                  if(chartData?.type == 'Widgets') {
+                    return (
+                      <Widgets 
+                      key={uniqueKey} 
+                      data={chartData}/>
                     )
                   }
                 return null;
